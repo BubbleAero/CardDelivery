@@ -1,0 +1,1 @@
+[![Java CI with Gradle](https://github.com/BubbleAero/CardDelivery/actions/workflows/gradle.yml/badge.svg)](https://github.com/BubbleAero/CardDelivery/actions/workflows/gradle.yml)
