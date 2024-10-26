@@ -25,14 +25,23 @@ public class CardTest {
         $$(".menu-item").find(Condition.text("Москва")).shouldBe(Condition.visible, Duration.ofSeconds(5)).click();
 
         String planningDate = generateDate();
+        LocalDate planningLocalDate = LocalDate.now().plusDays(7);
 
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        $("[data-test-id='date'] input").setValue(planningDate);
+        $("[data-test-id='date'] button").click();
+
+        int currentMonth = LocalDate.now().getMonthValue();
+        int targetMonth = planningLocalDate.getMonthValue();
+
+        if (targetMonth != currentMonth) {
+            $("[data-step='1']").click();
+        }
+
+        $$(".calendar__day").find(Condition.text(String.valueOf(planningLocalDate.getDayOfMonth()))).click();
 
         $("[data-test-id='name'] input").setValue("Василенко Виктория");
         $("[data-test-id='phone'] input").setValue("+79115670932");
         $("[data-test-id='agreement']").click();
-
 
         $("button.button").click();
 
